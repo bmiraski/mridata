@@ -65,7 +65,7 @@ for x in range(0,len(games)-1):
 print(games)
 g.close()
 
-#gamefile = open("C:\\Users\\MILES_DAVIS\\Desktop\\stats\\gamefile.txt", "w")
+gamefile = open("C:\\Users\\MILES_DAVIS\\Desktop\\stats\\bgamefile.txt", "w")
 
 for x in range(0,len(games)):
     res=requests.get(games[x])
@@ -88,6 +88,6 @@ for x in range(0,len(games)):
                                                              winner[0], winner[1])
 
     print(gameoutput)
-#    gamefile.write(gameoutput)
+    gamefile.write(gameoutput)
 
-#gamefile.close()
+gamefile.close()
