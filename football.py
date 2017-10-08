@@ -111,7 +111,7 @@ for x in range(0,len(games)-1):
     a = games[x]
     newx = a[0:len(a)-1]
     games[x] = newx
-#print(games)
+print(games)
 g.close()
 
 gamefile = open("C:\\Users\\MILES_DAVIS\\Desktop\\stats\\gamefile.txt", "w")
