@@ -1,17 +1,40 @@
 import requests
 import bs4
 
+
 def cleanteam(rawteam):
     """Cleans the team data in ESPN to match what is in the MRI sheet"""
     teamexceptions = {"Ole Miss": "Mississippi", "Miami (OH)": "Miami (Ohio)", "NC State": "North Carolina State",
                       "UMass": "Massachusetts", "Florida Intl": "Florida International", "Middle Tennessee":
                           "Middle Tenn. St", "Louisiana Monroe": "Louisiana-Monroe", "UCF": "Central Florida",
                       "Texas A&M;": "Texas A&M", "San José State": "San Jose State", "Hawai'i": "Hawaii", "California":
-                      "Cal", "Louisiana": "Louisiana-Lafayette", "UT San Antonio": "UTSA"}
+                      "Cal", "Louisiana": "Louisiana-Lafayette", "UT San Antonio": "Texas San Antonio",
+                      "Utah Valley": "Utah Valley State", "UMKC": "UM-Kansas City", "CS Fullerton":
+                          "Cal State Fullerton", "Gardner-Webb": "Gardner Webb", "South Carolina Upstate":
+                          "USC Upstate", "Morehead St": "Morehead State", "Detroit Mercy": "Detroit",
+                      "UNC Greensboro": "UNC-Greensboro", "Fort Wayne": "IUPUFW", "VCU": "Virginia Commonwealth",
+                      "UMass Lowell": "UMass-Lowell", "UNC Asheville": "UNC-Asheville", "McNeese": "McNeese State",
+                      "UMBC": "Md.-Baltimore Co.", "LIU Brooklyn": "LIU-Brooklyn", "Nicholls": "Nicholls State",
+                      "Omaha": "Nebraska Omaha", "Central Connecticut": "Central Conn St.",
+                      "Jacksonville St": "Jacksonville State", "Murray St": "Murray State", "Tenn-Martin":
+                          "Tennessee-Martin", "Milwaukee": "Wisconsin-Milwaukee", "UIC": "Illinois-Chicago",
+                      "Southern Miss": "Southern Mississippi", "Maryland-Eastern Shore": "Md.-Eastern Shore",
+                      "SE Louisiana": "Southeastern Louisiana", "Texas A&M-CC;": "Texas AMCC", "Mt. St. Mary's":
+                          "Mount St. Mary's", "UL Monroe": "Louisiana-Monroe", "Florida A&M;": "Florida A&M",
+                      "UC Irvine": "UC-Irvine", "Sacramento State": "Cal State Sacramento", "Prairie View A&M;":
+                          "Prairie View", "CSU Bakersfield": "Cal State Bakersfield", "CSU Northridge":
+                          "Cal State Northridge", "Tennessee St": "Tennessee State", "William & Mary":
+                          "William and Mary", "Saint Peter's": "St. Peter's", "St. Francis (BKN)": "St. Francis (NY)",
+                      "Alabama A&M;": "Alabama A&M", "North Dakota St": "North Dakota State", "UC Santa Barbara":
+                      "UCSB", "Little Rock": "Arkansas-Little Rock", "UNC Wilmington": "UNC-Wilmington",
+                      "Sam Houston State": "Sam Houston", "UT Arlington": "Texas Arlington", "Portland St":
+                      "Portland State", "Saint Mary's": "St. Mary's", "Saint Joseph's": "St. Joseph's",
+                      "North Carolina A&T;": "North Carolina A&T", "Green Bay": "Wisconsin-Green Bay"}
     if rawteam in teamexceptions:
         return teamexceptions[rawteam]
     else:
         return rawteam
+
 
 def getteams(data):
     """Extracts the teams from the matchup page data"""
@@ -20,6 +43,7 @@ def getteams(data):
     team2 = cleanteam(teams[1].getText())
     return (team1, team2)
 
+
 def getscore(data):
     """ Determines the game score from the set of game data"""
     scores = data.select('.score')
@@ -27,14 +51,16 @@ def getscore(data):
     score2 = scores[1].getText()
     return (score1, score2)
 
+
 def detwinner(score):
     """ Uses the game score to determine the winner"""
     scoreteam1 = int(score[0])
     scoreteam2 = int(score[1])
     if scoreteam1 > scoreteam2:
-        return (1,0)
+        return (1, 0)
     else:
-        return (0,1)
+        return (0, 1)
+
 
 def getrebs(data):
     """ Extracts the team rebound data from the data set. For some reason this returns a four item list so select
