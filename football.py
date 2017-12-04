@@ -104,7 +104,7 @@ def getturnovers(data):
     turn2 = row[x + 2].getText().strip()
     return (turn1, turn2)
 
-g = open("C:\\Users\\MILES_DAVIS\\Desktop\\stats\\gamelist.txt", "r")
+g = open("gamelist.txt", "r")
 
 games = g.readlines()
 for x in range(0,len(games)-1):
@@ -114,7 +114,7 @@ for x in range(0,len(games)-1):
 print(games)
 g.close()
 
-gamefile = open("C:\\Users\\MILES_DAVIS\\Desktop\\stats\\gamefile.txt", "w")
+gamefile = open("gamefile.txt", "w")
 
 for x in range(0,len(games)):
     res=requests.get(games[x])

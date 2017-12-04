@@ -1,0 +1,16 @@
+Stanford,USC,28,31,151,176,192,325,0,1,0,1
+Miami,Clemson,3,38,104,77,110,254,3,1,0,1
+Georgia,Auburn,28,7,238,114,183,145,0,2,1,0
+TCU,Oklahoma,17,41,83,218,234,243,2,0,0,1
+Ohio State,Wisconsin,27,21,238,60,211,238,3,2,1,0
+Memphis,Central Florida,55,62,282,232,471,494,2,4,0,1
+Fresno State,Boise State,14,17,137,109,172,255,1,0,0,1
+Akron,Toledo,28,45,113,254,283,307,2,5,0,1
+North Texas,Florida Atlantic,17,41,81,281,356,352,2,1,0,1
+Massachusetts,Florida International,45,63,156,379,392,295,3,2,0,1
+Louisiana-Monroe,Florida State,10,42,38,305,262,199,0,2,0,1
+Georgia Southern,Coastal Carolina,17,28,197,185,87,180,2,1,0,1
+Idaho,Georgia State,24,10,147,159,228,271,0,4,1,0
+Louisiana-Lafayette,Appalachian State,14,63,162,357,207,251,3,0,0,1
+South Alabama,New Mexico State,17,22,22,40,331,451,3,1,0,1
+Troy,Arkansas State,32,25,47,169,246,437,1,3,1,0
