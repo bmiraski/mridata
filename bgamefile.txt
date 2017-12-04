@@ -1,0 +1,118 @@
+South Dakota,Duke,80,96,24,48,10,19,0,1
+Kansas,Syracuse,76,60,31,36,16,17,1,0
+Villanova,St. Joseph's,94,53,49,28,11,10,1,0
+Harvard,Kentucky,70,79,36,37,15,10,0,1
+Wichita State,Baylor,69,62,38,36,12,11,1,0
+Princeton,Miami,52,80,31,39,11,12,0,1
+Cincinnati,Xavier,76,89,27,44,8,16,0,1
+USC,SMU,55,72,29,32,17,11,0,1
+Lehigh,Virginia,54,75,28,31,17,6,0,1
+San Francisco,Arizona State,57,75,34,46,14,14,0,1
+Yale,TCU,66,92,29,33,14,9,0,1
+La Salle,Holy Cross,58,54,32,32,6,9,1,0
+South Carolina State,North Carolina State,71,103,27,36,18,16,0,1
+Towson,Manhattan,56,55,42,23,20,19,1,0
+Indiana,Michigan,55,69,32,34,11,10,0,1
+Colorado,Colorado State,63,72,32,46,10,12,0,1
+Radford,VMI,63,50,39,33,13,16,1,0
+UNC-Greensboro,Liberty,76,75,51,53,17,21,1,0
+Bryant,New Hampshire,59,75,22,47,8,9,0,1
+Fairleigh Dickinson,Iona,75,82,41,41,17,8,0,1
+Virginia Tech,Mississippi,83,80,41,42,14,12,1,0
+Massachusetts,South Carolina,70,76,26,36,17,15,0,1
+Georgia,Marquette,73,66,37,34,10,12,1,0
+Saint Louis,Butler,45,75,26,41,17,13,0,1
+Youngstown State,DePaul,73,89,30,33,20,15,0,1
+Oakland City,Evansville,27,98,23,40,11,11,0,1
+Maine,Fordham,66,67,42,37,17,11,0,1
+St. Bonaventure,Buffalo,73,62,50,38,14,16,1,0
+IUPUI,Ball State,64,83,30,36,18,15,0,1
+Oakland,Western Michigan,78,73,37,31,14,10,1,0
+Central Conn St.,Brown,68,62,44,23,17,10,1,0
+Robert Morris,Siena,74,76,34,41,10,18,0,1
+Wisconsin-Green Bay,Belmont,75,86,31,39,15,16,0,1
+Quinnipiac,Lafayette,58,79,33,31,13,12,0,1
+Reinhardt,Winthrop,76,107,38,47,17,10,0,1
+Colgate,Binghamton,65,76,29,39,10,8,0,1
+UC Davis,Washington State,81,67,37,29,13,17,1,0
+Williams Baptist,New Orleans,70,87,29,45,13,19,0,1
+Air Force,Denver,61,59,30,37,14,23,1,0
+UT Rio Grande Valley,Rice,69,67,38,38,13,13,1,0
+USC Upstate,Gardner Webb,66,87,15,38,6,12,0,1
+Fayetteville St.,Longwood,52,61,45,42,12,13,0,1
+Md.-Baltimore Co.,The Citadel,98,72,57,38,15,10,1,0
+Northern Illinois,Chicago State,95,77,39,34,9,17,1,0
+Richmond,Wake Forest,53,82,28,39,13,10,0,1
+Monmouth,Connecticut,81,84,35,37,15,10,0,1
+Tulsa,Illinois State,58,65,49,29,21,11,0,1
+Tennessee Tech,Furman,50,64,43,47,16,14,0,1
+Oral Roberts,Arkansas-Little Rock,74,66,53,42,24,16,1,0
+San Jose State,Southern Illinois,58,76,28,30,20,18,0,1
+Illinois-Chicago,Loyola-Chicago,61,85,30,32,19,9,0,1
+Loyola (MD),Mount St. Mary's,75,80,36,30,19,14,0,1
+Dartmouth,Canisius,60,73,26,32,14,12,0,1
+Rider,Drexel,77,89,31,35,14,10,0,1
+Portland Bible,Portland State,50,125,34,42,38,11,0,1
+Montana State,Wisconsin-Milwaukee,68,64,36,34,14,15,1,0
+Cornell,Northeastern,66,84,29,26,23,15,0,1
+William and Mary,Savannah State,108,85,52,29,22,8,1,0
+American,Md.-Eastern Shore,70,74,35,40,12,7,0,1
+North Carolina A&T,Presbyterian,70,73,37,25,16,10,0,1
+Sacred Heart,St. John's,55,90,28,36,25,13,0,1
+Louisiana-Monroe,Stephen F. Austin,65,68,33,31,14,9,0,1
+Alabama A&M,Austin Peay,47,67,32,39,26,13,0,1
+Ohio State,Wisconsin,83,58,32,18,13,13,1,0
+Penn State,Iowa,77,73,30,39,14,18,1,0
+Loyola Marymount,Oregon State,74,78,36,29,13,10,0,1
+Delaware State,East Carolina,57,63,33,51,11,17,0,1
+Mercer,Memphis,81,83,40,40,16,9,0,1
+Providence,Rhode Island,68,75,35,28,21,11,0,1
+Tennessee-Martin,Chattanooga,63,66,28,37,13,13,0,1
+Schreiner,Abilene Christian,43,71,41,40,26,13,0,1
+Tennessee Wesleyan,Georgia Southern,61,97,29,37,19,8,0,1
+Wright State,Western Kentucky,60,78,32,38,11,14,0,1
+Army,Marist,82,75,37,28,17,15,1,0
+Drake,Wyoming,89,96,52,52,17,10,0,1
+Bowling Green,Norfolk State,92,77,38,26,16,14,1,0
+Jacksonville,Eastern Kentucky,65,70,44,45,16,16,0,1
+Boston College,Hartford,73,61,40,28,15,13,1,0
+South Florida,Appalachian State,61,84,31,32,17,11,0,1
+Hawaii,Utah,60,80,32,46,10,13,0,1
+Lamar,Coastal Carolina,69,67,29,47,16,23,1,0
+Old Dominion,Virginia Commonwealth,75,82,27,36,12,16,0,1
+Columbia,Albany,82,86,36,37,16,9,0,1
+Texas Southern,Toledo,69,71,42,32,18,14,0,1
+Cleveland State,Kent State,62,72,35,41,16,9,0,1
+Akron,Marshall,64,86,38,44,23,20,0,1
+South Alabama,Florida International,58,87,38,38,17,1,0,1
+St. Francis (PA),Stony Brook,83,85,28,29,18,13,0,1
+Southeast Missouri State,North Carolina Central,86,77,31,30,10,13,1,0
+Morehead State,Northern Kentucky,49,86,28,37,21,16,0,1
+St. Peter's,Elon,65,71,48,51,8,13,0,1
+Vermont,Bucknell,77,81,28,32,11,12,0,1
+Fresno State,Long Beach State,106,70,40,18,16,17,1,0
+Middle Tenn. St,Florida Gulf Coast,81,76,42,28,18,15,1,0
+Trinity Baptist,North Florida,58,85,36,51,17,15,0,1
+Miles,Louisiana Tech,55,106,29,42,18,15,0,1
+Bethune-Cookman,Florida Atlantic,75,93,40,48,16,16,0,1
+Arkansas,Houston,65,91,29,38,13,12,0,1
+Texas State,Houston Baptist,52,71,28,39,11,18,0,1
+Miami (Ohio),Western Illinois,76,73,40,39,14,18,1,0
+Missouri State,South Dakota State,73,53,41,30,8,7,1,0
+North Texas,Texas Arlington,60,65,49,38,20,11,0,1
+Florida A&M,Murray State,59,80,33,41,13,5,0,1
+Lipscomb,Tennessee State,95,86,33,39,19,21,1,0
+San Diego Christian,Southern Utah,68,87,24,36,17,11,0,1
+Charlotte,James Madison,82,87,33,39,9,9,0,1
+BYU,Utah State,75,66,35,35,13,15,1,0
+UC Riverside,Grand Canyon,56,68,45,40,24,8,0,1
+Texas San Antonio,Utah Valley State,80,88,29,55,10,18,0,1
+New Mexico,UTEP,76,88,37,33,14,14,0,1
+Cal Lutheran,Cal State Fullerton,58,86,26,48,11,9,0,1
+Pepperdine,Cal Poly,81,91,28,31,9,8,0,1
+San Diego,UCSB,57,67,39,44,17,16,0,1
+Arkansas-Pine Bluff,Santa Clara,57,72,24,24,20,15,0,1
+Arizona,UNLV,91,88,37,37,16,18,1,0
+Northern Arizona,Cal State Bakersfield,60,52,30,30,23,25,1,0
+Nevada,UC-Irvine,76,65,32,45,5,12,1,0
+St. Mary's,Cal,74,63,30,26,9,12,1,0
