@@ -1,20 +1,37 @@
 import requests
+import sys
 import bs4
+from selenium import webdriver
+
+
+def getGameIds(url):
+    """Get a list of the game ids that needs to be scraped."""
+    browser = webdriver.Chrome()
+    browser.get(url)
+    games = browser.find_elements_by_name(
+        '&lpos=college-football:scoreboard:boxscore')
+    gamelist = []
+    for elem in games:
+        x = elem.get_attribute('href')
+        x = x[-9:]
+        gamelist.append(x)
+    return gamelist
+
 
 def cleanteam(rawteam):
     """Cleans the team data in ESPN to match what is in the MRI sheet and makes sure that the team is D1A"""
     teamexceptions = {"Ole Miss": "Mississippi", "Miami (OH)": "Miami (Ohio)", "NC State": "North Carolina State",
                       "UMass": "Massachusetts", "Florida Intl": "Florida International", "Middle Tennessee":
-                          "Middle Tenn. St", "Louisiana Monroe": "Louisiana-Monroe", "UCF": "Central Florida",
+                          "Middle Tenn. St", "UL Monroe": "Louisiana-Monroe", "UCF": "Central Florida",
                       "Texas A&M;": "Texas A&M", "San José State": "San Jose State", "Hawai'i": "Hawaii", "California":
-                      "Cal", "Louisiana": "Louisiana-Lafayette", "UT San Antonio": "UTSA"}
+                      "Cal", "Louisiana": "Louisiana-Lafayette", "UT San Antonio": "UTSA", "UConn": "Connecticut"}
     teamlist = ["Air Force", "Akron", "Alabama", "Appalachian State", "Arizona", "Arizona State", "Arkansas", "Arkansas State",
      "Army", "Auburn", "Ball State", "Baylor", "Boise State", "Boston College", "Bowling Green", "Buffalo", "BYU",
      "Cal", "Central Florida", "Central Michigan", "Charlotte", "Cincinnati", "Clemson", "Coastal Carolina", "Colorado",
      "Colorado State", "Connecticut", "Duke", "East Carolina", "Eastern Michigan", "Florida", "Florida Atlantic",
      "Florida International", "Florida State", "Fresno State", "Georgia", "Georgia Southern", "Georgia State",
-     "Georgia Tech", "Hawaii", "Houston", "Idaho", "Illinois", "Indiana", "Iowa", "Iowa State", "Kansas",
-     "Kansas State", "Kent State", "Kentucky", "Louisiana Tech", "Louisiana-Lafayette", "Louisiana-Monroe",
+     "Georgia Tech", "Hawaii", "Houston", "Illinois", "Indiana", "Iowa", "Iowa State", "Kansas",
+     "Kansas State", "Kent State", "Kentucky", "Liberty", "Louisiana Tech", "Louisiana-Lafayette", "Louisiana-Monroe",
      "Louisville", "LSU", "Marshall", "Maryland", "Massachusetts", "Memphis", "Miami", "Miami (Ohio)", "Michigan",
      "Michigan State", "Middle Tenn. St", "Minnesota", "Mississippi", "Mississippi State", "Missouri", "Navy",
      "Nebraska", "Nevada", "New Mexico", "New Mexico State", "North Carolina", "North Carolina State", "North Texas",
@@ -74,12 +91,14 @@ def getrush(data):
     rush2 = row[x+2].getText().strip()
     return (rush1, rush2)
 
+
 def getpass(data):
-    """ Extracts the passing data from the game data by finding the td tag that contains 'passing'
-    and selecting the text from the next two td tags. Text must be trimmed because of formatting
-    on the page."""
+    """Extracts the passing data from the game data by finding the td tag that
+    contains 'passing' and selecting the text from the next two td tags. Text
+    must be trimmed because of formatting on the page."""
+
     row = data.select('td')
-    x=0
+    x = 0
     while True:
         if row[x].getText().strip() != "Passing":
             x += 1
@@ -104,20 +123,19 @@ def getturnovers(data):
     turn2 = row[x + 2].getText().strip()
     return (turn1, turn2)
 
-g = open("gamelist.txt", "r")
 
-games = g.readlines()
-for x in range(0,len(games)-1):
-    a = games[x]
-    newx = a[0:len(a)-1]
-    games[x] = newx
-print(games)
-g.close()
+gameIds = getGameIds(str(sys.argv[1]))
+
+games = []
+
+for game in gameIds:
+    u = 'http://www.espn.com/college-football/matchup?gameId=' + game
+    games.append(u)
 
 gamefile = open("gamefile.txt", "w")
 
-for x in range(0,len(games)):
-    res=requests.get(games[x])
+for x in range(0, len(games)):
+    res = requests.get(games[x])
     try:
         res.raise_for_status()
     except Exception as exc:
@@ -132,10 +150,10 @@ for x in range(0,len(games)):
 
     winner = detwinner(gamescore)
 
-    gameoutput = "{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11}\n".format(gameteams[0], gameteams[1],
-                                                                                   gamescore[0], gamescore[1],
-                                                             rushyards[0], rushyards[1], passyards[0], passyards[1],
-                                                             turnovers[0], turnovers[1], winner[0], winner[1])
+    gameoutput = "{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11}\n".format(
+        gameteams[0], gameteams[1], gamescore[0], gamescore[1],
+        rushyards[0], rushyards[1], passyards[0], passyards[1],
+        turnovers[0], turnovers[1], winner[0], winner[1])
 
     print(gameoutput)
     gamefile.write(gameoutput)
