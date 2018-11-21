@@ -3,17 +3,18 @@ from selenium import webdriver
 
 browser = webdriver.Chrome()
 
-browser.get('http://www.espn.com/college-football/scoreboard/_/group/80/year/2017/seasontype/2/week/14')
+browser.get('http://www.espn.com/college-football/scoreboard/_/group/80/year/2018/seasontype/2/week/7')
 
-games = browser.find_elements_by_link_text('Box Score')
-weekfile = open("weekfile.txt", "w")
+games = browser.find_elements_by_name('&lpos=college-football:scoreboard:boxscore')
+
+gamelist = []
 
 for elem in games:
     x = elem.get_attribute('href')
-    print(x)
-    x = x + '\n'
-    weekfile.write(x)
+    x = x[-9:]
+    gamelist.append(x)
 
+print(gamelist)
 
 
 
@@ -21,5 +22,3 @@ for elem in games:
 
 #for chunk in res.iter_content(2500):
 #        weekfile.write(chunk)
-
-weekfile.close()
