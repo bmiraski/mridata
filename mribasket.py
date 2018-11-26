@@ -59,15 +59,6 @@ def detwinner(score):
         return (0, 1)
 
 
-def getrebs(data):
-    """Extracts the team rebound data from the data set. For some reason this
-    returns a four item list so select items 0 and 2 for the actual data."""
-    rebs = data.select("tr.highlight td.reb")
-
-    rebs1 = rebs[0].getText().strip()
-    rebs2 = rebs[2].getText().strip()
-    return (rebs1, rebs2)
-
 def getrebsbytd(data):
     """Extract rebound data by finding the Total Rebounds data cell and taking
     the next two values."""
@@ -82,15 +73,6 @@ def getrebsbytd(data):
     rebs2 = row[x+2].getText().strip()
     return (rebs1, rebs2)
 
-def getturnovers(data):
-    """ Extracts the passing data from the game data by finding the td tag that contains 'passing'
-    and selecting the text from the next two td tags. Text must be trimmed because of formatting
-    on the page."""
-    turns = data.select("tr.highlight td.to")
-
-    turn1 = turns[0].getText().strip()
-    turn2 = turns[2].getText().strip()
-    return (turn1, turn2)
 
 def getturnoversbytd(data):
     """Extract turnover data based on finding Total Turnovers data cell and
