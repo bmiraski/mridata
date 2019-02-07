@@ -1,23 +1,21 @@
 """Extract basketball game data from ESPN for input into Excel rating sheet."""
 
 import bs4
+import re
 import requests
 import sys
-
-from selenium import webdriver
 
 
 def getGameIds(url):
     """Get a list of the game ids that needs to be scraped."""
-    browser = webdriver.Chrome()
-    browser.get(url)
-    games = browser.find_elements_by_name(
-        '&lpos=ncb:scoreboard:boxscore')
+    res = requests.get(url)
+    games_raw = res.text
+    boxscore_starts = [m.start() for m in re.finditer('boxscore\?gameId=\d*',
+                                                      games_raw)]
     gamelist = []
-    for elem in games:
-        x = elem.get_attribute('href')
-        x = x[-9:]
-        gamelist.append(x)
+    for game in boxscore_starts:
+        id = games_raw[(game + 16):(game + 25)]
+        gamelist.append(id)
     return gamelist
 
 
@@ -72,7 +70,7 @@ def getrebsbytd(data):
     row = data.select('td')
     x = 0
     while True:
-        if row[x].getText().strip() != "Total Rebounds":
+        if row[x].getText().strip() != "Rebounds":
             x += 1
         else:
             break
