@@ -3,20 +3,44 @@
 import bs4
 import re
 import requests
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 import sys
+
+
+def _get_options():
+    """Add options to Selenium."""
+    options = Options()
+    options.add_argument("--headless")
+    options.add_argument('--disable-gpu')
+    options.add_argument('--no-sandbox')
+    return options
+
+
+def getGameIdsSelenium():
+    """Use Selenium to get game ids."""
+    driver = webdriver.Chrome(options=_get_options())
+    driver.get(SCOREBOARD)
+    find_names = driver.find_elements_by_name
+    box_scores = find_names('&lpos=ncb:scoreboard:boxscore')
+    ids = [game.get_attribute('href')[-9:] for game in box_scores]
+    print(ids, len(ids))
+
+    driver.quit()
+    return ids
 
 
 def getGameIds(url):
     """Get a list of the game ids that needs to be scraped."""
     res = requests.get(url)
     games_raw = res.text
-    boxscore_starts = [m.start() for m in re.finditer('boxscore\?gameId=\d*',
-                                                      games_raw)]
+    boxscore_starts = [m.start() for m in re.finditer(
+        '/mens-college-basketball/boxscore\?gameId=\d*', games_raw)]
     gamelist = []
     for game in boxscore_starts:
-        id = games_raw[(game + 16):(game + 25)]
+        id = games_raw[(game + 41):(game + 50)]
         gamelist.append(id)
-    return gamelist
+    return set(gamelist)
 
 
 def cleanteam(rawteam):
@@ -97,7 +121,10 @@ def getturnoversbytd(data):
     return (turn1, turn2)
 
 
-gameIds = getGameIds(str(sys.argv[1]))
+SCOREBOARD = str(sys.argv[1])
+
+gameIds = getGameIdsSelenium()
+# gameIds = getGameIds(str(sys.argv[1]))
 
 games = []
 
@@ -114,6 +141,7 @@ for x in range(0, len(games)):
     except Exception as exc:
         print('There was a problem: %s' % (exc))
 
+#    print(f"Processing {games[x]}: \n")
     gamedata = bs4.BeautifulSoup(res.text, "html.parser")
     gameteams = getteams(gamedata)
     if gameteams[0] == "Not Division 1":
