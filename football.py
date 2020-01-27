@@ -10,11 +10,11 @@ def getGameIds(url):
     """Get a list of the game ids that needs to be scraped."""
     res = requests.get(url)
     games_raw = res.text
-    boxscore_starts = [m.start() for m in re.finditer('boxscore\?gameId=\d*',
-                                                      games_raw)]
+    boxscore_starts = [m.start() for m in re.finditer(
+        'college-football/boxscore\?gameId=\d*', games_raw)]
     gamelist = []
     for game in boxscore_starts:
-        id = games_raw[(game + 16):(game + 25)]
+        id = games_raw[(game + 33):(game + 42)]
         gamelist.append(id)
     return gamelist
 
@@ -33,6 +33,7 @@ def cleanteam(rawteam):
                       "Texas A&M;": "Texas A&M", "San José State":
                       "San Jose State", "Hawai'i": "Hawaii", "California":
                       "Cal", "Louisiana": "Louisiana-Lafayette",
+                      "Louisiana Monroe": "Louisiana-Monroe",
                       "UT San Antonio": "UTSA", "UConn": "Connecticut"}
     teamlist = ["Air Force", "Akron", "Alabama", "Appalachian State",
                 "Arizona", "Arizona State", "Arkansas", "Arkansas State",
@@ -80,6 +81,8 @@ def cleanteam(rawteam):
 def getteams(data):
     """Extract the teams from the matchup page data."""
     teams = data.select('.long-name')
+    if len(teams) == 0:
+        return "error_game"
     team1 = cleanteam(teams[0].getText())
     team2 = cleanteam(teams[1].getText())
     return (team1, team2)
@@ -111,14 +114,14 @@ def getrush(data):
     """
     row = data.select('td')
     x = 0
-    while True:
+    while x < len(row):
         if row[x].getText().strip() != "Rushing":
             x += 1
         else:
-            break
-    rush1 = row[x+1].getText().strip()
-    rush2 = row[x+2].getText().strip()
-    return (rush1, rush2)
+            rush1 = row[x+1].getText().strip()
+            rush2 = row[x+2].getText().strip()
+            return (rush1, rush2)
+    return "error_game"
 
 
 def getpass(data):
@@ -165,7 +168,11 @@ for game in gameIds:
     u = 'http://www.espn.com/college-football/matchup?gameId=' + game
     games.append(u)
 
+print(games)
+print(len(games))
+
 gamefile = open("gamefile.txt", "w")
+error_games = []
 
 for x in range(0, len(games)):
     res = requests.get(games[x])
@@ -176,8 +183,14 @@ for x in range(0, len(games)):
 
     gamedata = bs4.BeautifulSoup(res.text, "html.parser")
     gameteams = getteams(gamedata)
+    if gameteams == "error_game":
+        error_games.append(games[x])
+        continue
     gamescore = getscore(gamedata)
     rushyards = getrush(gamedata)
+    if rushyards == "error_game":
+        error_games.append(games[x])
+        continue
     passyards = getpass(gamedata)
     turnovers = getturnovers(gamedata)
 
@@ -191,4 +204,6 @@ for x in range(0, len(games)):
     print(gameoutput)
     gamefile.write(gameoutput)
 
+if len(error_games) > 0:
+    print(f"The following games were not processed due to an error: {error_games}")
 gamefile.close()
